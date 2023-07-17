@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Convite Interativo</title>
+  <style>
+    body {
+      background-color: pink;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+    #convite {
+      background-color: white;
+      padding: 20px;
+      text-align: center;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      position: relative;
+    }
+    #nao {
+      position: absolute;
+      top: 170px; /* Ajuste a posição vertical conforme necessário */
+      left: 140px; /* Ajuste a posição horizontal conforme necessário */
+    }
+    .coracao {
+      font-size: 50px;
+      margin: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="convite">
+    <h2 style="color: black;">Gigi, quer ir ver Barbie comigo dia 22/07?</h2>
+    <div class="coracao">&#128151;</div> <!-- Emoji de coração -->
+    <br>
+    <button onclick="responder('sim')">Sim</button>
+    <button id="nao" onclick="moverNao()">Não</button>
+  </div>
+
+  <script>
+    function responder(resposta) {
+      if (resposta === 'sim') {
+        const convite = document.getElementById('convite');
+        convite.innerHTML = `<h2 style="color: black;">Ótimo! Aguardo você no dia 22/07, meu docinho de whey!</h2>
+                             <p>Para mais informações, me chame no privado.</p>`;
+      } else {
+        alert('Que pena que você não pode ir. Quem sabe na próxima.');
+      }
+    }
+
+    function moverNao() {
+      const naoButton = document.getElementById('nao');
+      const convite = document.getElementById('convite');
+      const maxX = convite.clientWidth - naoButton.clientWidth;
+      const maxY = convite.clientHeight - naoButton.clientHeight;
+      const x = Math.random() * maxX;
+      const y = Math.random() * maxY;
+      naoButton.style.left = `${x}px`;
+      naoButton.style.top = `${y}px`;
+    }
+  </script>
+</body>
+</html>
